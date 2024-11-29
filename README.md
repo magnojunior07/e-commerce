@@ -71,3 +71,23 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+## 💬 Padrões de Commits
+
+Usamos uma estrutura padronizada para as mensagens de commit, assim cada mudança fica clara no histórico do projeto. Abaixo estão os prefixos sugeridos com seus respectivos emojis:
+
+| Emoji | Tipo de Commit        | Descrição                      | Exemplo                              |
+|-------|------------------------|--------------------------------|--------------------------------------|
+| ✨    | `feat: `               | Nova funcionalidade           | `✨ feat: adicionar autenticação`    |
+| 🐛    | `fix: `                | Correção de bug               | `🐛 fix: corrigir erro no login`     |
+| 📝    | `docs: `               | Atualização de documentação   | `📝 docs: adicionar instruções no README` |
+| 💄    | `style: `              | Mudanças de estilo            | `💄 style: ajustar espaçamento`      |
+| ♻️    | `refactor: `           | Refatoração de código         | `♻️ refactor: melhorar performance de busca` |
+| 🚀    | `perf: `               | Melhorias de performance      | `🚀 perf: otimizar carregamento`     |
+| ✅    | `test: `               | Testes adicionados            | `✅ test: criar teste de login`      |
+| 📦    | `chore: `              | Atualizações gerais           | `📦 chore: atualizar dependências`   |
+| 🔥    | `remove: `             | Remover código/lógica         | `🔥 remove: código desnecessário`    |
+| 🎨    | `ui: `                 | Alterações na interface       | `🎨 ui: aprimorar tela de login`     |
+
+---
