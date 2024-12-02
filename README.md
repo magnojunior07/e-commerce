@@ -88,14 +88,6 @@ Para rodar os testes:
 npm run test
 ```
 
-## Documentação da API
-
-A documentação da API está disponível em:
-
-```
-http://localhost:3000/api
-```
-
 ## Banco de Dados
 
 O Prisma está configurado para usar o PostgreSQL. Certifique-se de que o banco de dados esteja configurado e rodando antes de iniciar o projeto.
