@@ -8,5 +8,6 @@ import ClienteRepository from "./cliente.repository";
     controllers: [ClienteController],
     providers: [ClienteService, ClienteRepository],
     imports: [PedidoModule],
+    exports: [ClienteRepository, ClienteService],
 })
 export class ClienteModule {}

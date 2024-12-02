@@ -1,6 +1,6 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 import { CreateClienteDto } from "./dto/create-cliente.dto";
-import DatabaseService from "src/database/database.service";
+import DatabaseService from "../../database/database.service";
 import { ConflictException } from "@nestjs/common";
 import { UpdateClienteDto } from "./dto/update-cliente.dto";
 

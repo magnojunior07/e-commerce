@@ -1,6 +1,6 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 import { CreatePedidoDto } from "./dto/create-pedido.dto";
-import DatabaseService from "src/database/database.service";
+import DatabaseService from "../../database/database.service";
 import { ConflictException } from "@nestjs/common";
 import { UpdatePedidoDto } from "./dto/update-pedido.dto";
 import { CreatePedidoItemDto } from "./dto/create-pedido-item.dto";

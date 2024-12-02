@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import DatabaseService from "src/database/database.service";
+import DatabaseService from "../../database/database.service";
 import { CreateProdutoDto } from "./dto/create-produto.dto";
 import { UpdateProdutoDto } from "./dto/update-produto.dto";
 
