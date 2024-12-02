@@ -29,11 +29,6 @@ Antes de começar, certifique-se de que se as versões das ferramentas estão de
    npm install
    ```
 
-   Com Yarn:
-   ```bash
-   yarn install
-   ```
-
 3. Configure as variáveis de ambiente:
 
    Renomeie o arquivo `.env.example` para `.env` e configure as variáveis conforme suas necessidades:
@@ -65,11 +60,6 @@ Para iniciar o projeto em ambiente de desenvolvimento, use:
 Com NPM:
 ```bash
 npm run start:dev
-```
-
-Com Yarn:
-```bash
-yarn start:dev
 ```
 
 O servidor será iniciado em `http://localhost:3000` por padrão.
