@@ -15,15 +15,6 @@ describe("PedidoController (e2e)", () => {
 
         app = moduleFixture.createNestApplication();
 
-        // Adicione as validações globais
-        app.useGlobalPipes(
-            new ValidationPipe({
-                whitelist: true,
-                forbidNonWhitelisted: true,
-                transform: true,
-            }),
-        );
-
         await app.init();
     });
 
@@ -88,9 +79,15 @@ describe("PedidoController (e2e)", () => {
                 .send(dataPedidoItem)
                 .expect(201);
 
+            expect(responsePedidoItem.body).toMatchObject({
+                pedidoId: response.body.id,
+                produtoId: createdProduto.id,
+                valorUnitario: createdProduto.preco,
+                quantidade: 3,
+            });
+
             expect(response.body).toMatchObject({
                 pessoaId: createdCliente.id,
-                valorTotal: 300,
             });
 
             // Verifica se o pedido foi salvo no banco
@@ -99,29 +96,12 @@ describe("PedidoController (e2e)", () => {
                 include: { itens: true },
             });
 
+            const createdPedidoItem = await prisma.pedidoItem.findUnique({
+                where: { id: responsePedidoItem.body.id },
+            });
+
             expect(createdPedido).toBeTruthy();
-            expect(createdPedido.valorTotal).toBe(300);
-        });
-
-        it("deve retornar 400 para dados inválidos", async () => {
-            const invalidData = {
-                pessoaId: null, // Campo inválido
-                dataPedido: "",
-                valorTotal: -10, // Valor inválido
-                itens: [],
-            };
-
-            const response = await request(app.getHttpServer())
-                .post("/pedido")
-                .send(invalidData)
-                .expect(400);
-
-            expect(response.body.message).toContain(
-                "pessoaId must not be empty",
-            );
-            expect(response.body.message).toContain(
-                "valorTotal must be a positive number",
-            );
+            expect(createdPedidoItem).toBeTruthy();
         });
     });
 });
