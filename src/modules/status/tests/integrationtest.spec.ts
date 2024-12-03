@@ -1,5 +1,5 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { INestApplication } from "@nestjs/common";
+import { INestApplication, ValidationPipe } from "@nestjs/common"; // Adicione ValidationPipe aqui
 import * as request from "supertest";
 import { AppModule } from "../../../app.module";
 import DatabaseService from "../../../database/database.service";
@@ -10,10 +10,19 @@ describe("StatusController (e2e)", () => {
 
     beforeAll(async () => {
         const moduleFixture: TestingModule = await Test.createTestingModule({
-            imports: [AppModule], // Importe o módulo principal da aplicação
+            imports: [AppModule],
         }).compile();
 
         app = moduleFixture.createNestApplication();
+
+        // Adicione estas linhas
+        app.useGlobalPipes(
+            new ValidationPipe({
+                whitelist: true,
+                forbidNonWhitelisted: true,
+                transform: true,
+            }),
+        );
 
         await app.init();
     });

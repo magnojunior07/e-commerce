@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { CreateStatusDto } from "./dto/create-status.dto";
 import { UpdateStatusDto } from "./dto/update-status.dto";
 import StatusRepository from "./status.repository";
@@ -19,7 +19,13 @@ export class StatusService {
         return this.statusRepository.findOne(id);
     }
 
-    update(id: number, updateStatusDto: UpdateStatusDto) {
+    async update(id: number, updateStatusDto: UpdateStatusDto) {
+        const status = await this.statusRepository.findOne(id);
+
+        if (!status) {
+            throw new NotFoundException("Registro não encontrado");
+        }
+
         return this.statusRepository.update(id, updateStatusDto);
     }
 

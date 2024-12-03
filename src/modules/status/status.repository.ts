@@ -1,7 +1,7 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 import { CreateStatusDto } from "./dto/create-status.dto";
 import DatabaseService from "../../database/database.service";
-import { ConflictException } from "@nestjs/common";
+import { ConflictException, NotFoundException } from "@nestjs/common";
 import { UpdateStatusDto } from "./dto/update-status.dto";
 
 export default class StatusRepository {
@@ -47,10 +47,17 @@ export default class StatusRepository {
     async update(id: number, status: UpdateStatusDto) {
         const prisma: PrismaClient = DatabaseService.getInstance();
 
+        // Primeiro, verifique se o registro existe
+        const existingStatus = await prisma.status.findUnique({
+            where: { id },
+        });
+
+        if (!existingStatus) {
+            throw new NotFoundException("Registro não encontrado");
+        }
+
         return prisma.status.update({
-            where: {
-                id,
-            },
+            where: { id },
             data: {
                 descricao: status.descricao,
             },
