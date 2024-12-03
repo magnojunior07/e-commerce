@@ -28,7 +28,6 @@ describe("StatusController (e2e)", () => {
     });
 
     afterAll(async () => {
-        await prisma.status.deleteMany(); // Limpa os registros criados durante os testes
         await app.close();
     });
 

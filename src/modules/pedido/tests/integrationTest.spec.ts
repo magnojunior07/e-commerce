@@ -19,10 +19,6 @@ describe("PedidoController (e2e)", () => {
     });
 
     afterAll(async () => {
-        await prisma.pedidoItem.deleteMany(); // Limpa itens do pedido
-        await prisma.pedido.deleteMany(); // Limpa os pedidos criados
-        await prisma.produto.deleteMany(); // Limpa os produtos criados
-        await prisma.cliente.deleteMany(); // Limpa os clientes criados
         await app.close();
     });
 
@@ -36,7 +32,7 @@ describe("PedidoController (e2e)", () => {
             createdCliente = await prisma.cliente.create({
                 data: {
                     nome: "Cliente Teste",
-                    email: "cliente@teste.com",
+                    email: "cliente@teste2.com",
                     logradouro: "Rua 123",
                     bairro: "Bairro Teste",
                     numero: "456",
@@ -91,17 +87,12 @@ describe("PedidoController (e2e)", () => {
             });
 
             // Verifica se o pedido foi salvo no banco
-            const createdPedido = await prisma.pedido.findUnique({
-                where: { id: response.body.id },
-                include: { itens: true },
-            });
 
             const createdPedidoItem = await prisma.pedidoItem.findUnique({
                 where: { id: responsePedidoItem.body.id },
             });
 
-            expect(createdPedido).toBeTruthy();
-            expect(createdPedidoItem).toBeTruthy();
+            expect(createdPedidoItem.pedidoId).toBe(response.body.id);
         });
     });
 });
