@@ -48,7 +48,7 @@ Antes de começar, certifique-se de que se as versões das ferramentas estão de
    Realize a migração para criar as tabelas no banco de dados:
 
    ```bash
-   npx prisma migrate dev --name init
+   npx prisma db push
    ```
 
 ## Execução
@@ -64,20 +64,10 @@ npm run start:dev
 
 O servidor será iniciado em `http://localhost:3000` por padrão.
 
-### Ambiente de Produção
-
-Para executar o projeto em produção:
-
-1. Compile o código:
+1. Inicie o servidor:
 
    ```bash
-   npm run build
-   ```
-
-2. Inicie o servidor:
-
-   ```bash
-   npm run start:prod
+   npm run start
    ```
 
 ### Testes
