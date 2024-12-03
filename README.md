@@ -35,6 +35,7 @@ Antes de começar, certifique-se de que se as versões das ferramentas estão de
 
    ```env
    DATABASE_URL="postgresql://usuario:senha@localhost:5432/ecommerce"
+   DIRECT_URL="postgresql://usuario:senha@localhost:5432/ecommerce"
    ```
 
 4. Configure o Prisma:
